@@ -1,0 +1,40 @@
+.Room {
+  text-align: center;
+  background-color: #121212;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  color: white;
+  flex-direction: column;
+  align-items: "center";
+  justify-content: center;
+  font-family: Arial, sans-serif;
+}
+
+.btn {
+    border: 2px solid white;
+    border-radius: 4px;
+    padding: 10px;
+    width: 33%;
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.create {
+    border-color: #528d4e;
+}
+.create:hover {
+    background-color: #528d4e;
+}
+
+.join {
+    border-color: #b49f39;
+}
+.join:hover {
+    border-color: #b49f39;
+    background-color: #b49f39;
+    /* color: black; */
+}
