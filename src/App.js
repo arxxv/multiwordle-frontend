@@ -1,6 +1,5 @@
 import "./App.css";
 import { createContext, useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Room from "./components/Room";
 import Game from "./components/Game";
 import Wait from "./components/Wait";
