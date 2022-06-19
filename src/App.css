@@ -1,17 +1,21 @@
 .App {
   text-align: center;
-  background-color: #121212;
   width: 100vw;
-  height: 100vh;
-  /* display: flex; */
+  height: auto;
   color: white;
 }
-
+:root {
+  --correct: #538D4E;
+  --present: #B59F3B;
+  --purple: #563d7c;
+  --bg: #121212
+}
 body {
   padding: 0%;
   margin: 0;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
+  background-color: var(--bg);
 }
 
 nav {
@@ -30,7 +34,7 @@ nav h1 {
   font-size: 45px;
 }
 .game {
-  width: 50vw;
+  width: 40vw;
   height: calc(100vh - 170px);
   display: flex;
   align-items:center;
@@ -40,6 +44,13 @@ nav h1 {
   flex-direction: column;
 }
 
+.score {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  width: 20vw;
+  height: 200px;
+}
 
 .games {
   width: 100vw;
@@ -79,12 +90,24 @@ nav h1 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.whiteboard {
+  margin-top: 80px;
+  font-size: 1.3rem;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: var(--bg);
+  font-weight: bold;
+  border-radius: 3px;
+  box-sizing: borderbox;
+  padding: 10px;
+}
+
 #correct {
-  background-color: #528d4e;
+  background-color: var(--correct);
 }
 
 #present {
-  background-color: #b49f39;
+  background-color: var(--present);
 }
 
 #absent {
@@ -92,10 +115,10 @@ nav h1 {
 }
 
 .keyboard {
-  width: 95%;
+  width: 100vw;
   height: 20%;
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 }
 
 .line1 {
@@ -140,4 +163,76 @@ nav h1 {
 }
 #disabled {
   background-color: #3a393c;
+}
+
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--correct);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--present);
+}
+
+.Room {
+  text-align: center;
+  background-color: var(--bg);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  color: white;
+  flex-direction: column;
+  align-items: "center";
+  justify-content: center;
+  font-family: Arial, sans-serif;
+}
+
+.btn {
+    border: 2px solid white;
+    border-radius: 4px;
+    padding: 10px;
+    width: 33%;
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 10px;
+}
+
+
+.create {
+  border-color: #538D4E;
+}
+.create:hover {
+  background-color: #538D4E;
+}
+
+.single {
+  border-color: var(--purple) ;
+}
+.single:hover {
+  background-color: var(--purple) ;
+}
+
+.join {
+  border-color: var(--present);
+}
+.join:hover {
+  background-color: var(--present);
+}
+
+.wait {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 2rem;
+  font-family: Arial, sans-serif;
+  margin: 20px;
 }

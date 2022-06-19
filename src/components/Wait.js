@@ -1,19 +1,10 @@
 import React from "react";
-
-const style = {
-  height: "100vh",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  flexDirection: "column",
-  fontSize: "2rem",
-  fontFamily: "Arial, sans-serif",
-};
+import "../App.css";
 
 function Wait({ roomId }) {
   return (
     <>
-      <div style={style}>
+      <div className="wait">
         <div>Room id:</div>
         <div style={{ fontWeight: "bold", textDecoration: "underline" }}>
           {roomId}

@@ -1,19 +1,30 @@
-import React, { useEffect, useState, useContext } from "react";
-import "./Room.css";
-import { AppContext } from "./Game";
+import "../App.css";
 
-function Room({ setRoomPage, roomId, setRoomId, socket }) {
+function Room({ setRoomPage, roomId, setRoomId, socket, setSinglePlayer }) {
   const joinGame = () => {
     socket.emit("joinRoom", roomId);
+    setSinglePlayer(false);
   };
 
   const createRoom = () => {
-    socket.emit("createRoom");
+    socket.emit("createRoom", { singlePlayer: false });
     setRoomPage("W");
+    setSinglePlayer(false);
+  };
+
+  const singlePlayer = () => {
+    socket.emit("createRoom", { singlePlayer: true });
+    setSinglePlayer(true);
   };
 
   return (
     <div className="Room">
+      <div>
+        <button className="btn single" onClick={singlePlayer}>
+          Single Player
+        </button>
+      </div>
+      <div>OR</div>
       <div>
         <button className="btn create" onClick={createRoom}>
           Create Room
@@ -32,6 +43,22 @@ function Room({ setRoomPage, roomId, setRoomId, socket }) {
           Join Room
         </button>
       </div>
+      <a
+        href="https://www.nytimes.com/games/wordle/index.html"
+        target="_blank"
+        style={{
+          color: "white",
+          textDecoration: "none",
+          position: "absolute",
+          top: "-6px",
+          right: "15px",
+          margin: 0,
+        }}
+      >
+        <h2>
+          <img src="https://www.nytimes.com/games/wordle/images/NYT-Wordle-Icon-32.png"></img>
+        </h2>
+      </a>
     </div>
   );
 }

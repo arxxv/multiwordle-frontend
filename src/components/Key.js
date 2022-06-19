@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-// import { AppContext } from "../App";
 import { AppContext } from "./Game";
 
 function Key({ value, bigKey, color }) {

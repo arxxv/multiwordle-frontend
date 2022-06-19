@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useContext } from "react";
 import Key from "./Key";
 
-// import { AppContext } from "../App";
 import { AppContext } from "./Game";
 
 function Keyboard({ usedKeys }) {
