@@ -1,5 +1,5 @@
 # Multi-Wordle
-A multi-player (upto two players) wordle game. 
+Now play Wordle duets with your friends. 
 It supports single player as well as multi-player games. 
 
 ### Menu
@@ -25,10 +25,8 @@ It supports single player as well as multi-player games.
 ##### player1
 <img src="https://github.com/arxxv/multiwordle-frontend/blob/main/screenshots/multi-player-vi.png"><img/>
 
-### Tried to make it responsive
+### Kinda responsive
 <img src="https://github.com/arxxv/multiwordle-frontend/blob/main/screenshots/multi-player-wrong.jpg" height="500px"><img/>
 <img src="https://github.com/arxxv/multiwordle-frontend/blob/main/screenshots/single-player-wrong-ii.jpg" height="500px"><img/>
 
-This was my first experience with both, react.js and socket.io and it was a fun ride.
-
-#### Built using React.js, Node.js, Socket.io
+#### Built using React.js, Node.js, Socket.io, Redis
