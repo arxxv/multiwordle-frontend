@@ -1,19 +1,24 @@
 import "../App.css";
 
 function Room({ setRoomPage, roomId, setRoomId, socket, setSinglePlayer }) {
+  const userid = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("userid="))
+    ?.split("=")[1];
+
   const joinGame = () => {
-    socket.emit("joinRoom", roomId);
+    socket.emit("joinRoom", roomId, userid);
     setSinglePlayer(false);
   };
 
   const createRoom = () => {
-    socket.emit("createRoom", { singlePlayer: false });
+    socket.emit("createRoom", { singlePlayer: false, userid });
     setRoomPage("W");
     setSinglePlayer(false);
   };
 
   const singlePlayer = () => {
-    socket.emit("createRoom", { singlePlayer: true });
+    socket.emit("createRoom", { singlePlayer: true, userid });
     setSinglePlayer(true);
   };
 

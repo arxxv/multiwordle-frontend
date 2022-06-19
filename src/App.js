@@ -21,6 +21,15 @@ function App() {
   const [singlePlayer, setSinglePlayer] = useState(false);
 
   useEffect(() => {
+    socket.on("uid", (uid) => {
+      const userid = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("userid="))
+        ?.split("=")[1];
+
+      if (!userid) document.cookie = `userid=${uid}`;
+    });
+
     socket.on("roomId", (roomId) => {
       setRoomId(roomId);
     });
@@ -40,6 +49,7 @@ function App() {
           <img
             src={logo}
             style={{ width: "50px", borderRadius: "10px", marginRight: "25px" }}
+            alt="logo"
           />
           <h1 onClick={goHome}>MultiWordle</h1>
         </div>
