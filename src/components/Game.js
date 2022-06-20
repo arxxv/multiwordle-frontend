@@ -40,9 +40,10 @@ function Game({
         tempBoard[r][c] = initState["boardState"][r][c].toUpperCase();
       }
     }
+    setUsedKeys(initState.usedKeys);
     setBoard1(tempBoard);
     setGameState1(initState);
-    setScore1(initState["points"]);
+    setScore1(initState.points);
   }, []);
 
   useEffect(() => {
@@ -54,18 +55,18 @@ function Game({
       setLetterPos(0);
       setGameState1(newGameState);
 
-      let tempKeys = [...usedKeys];
-      for (let i = 0; i < 5; i++) {
-        let x = newGameState.boardState[newGameState.rowIndex - 1][i];
-        if (newGameState.solution.includes(x)) {
-          if (tempKeys[x.charCodeAt(0) - "a".charCodeAt(0)] === "correct")
-            continue;
-          tempKeys[x.charCodeAt(0) - "a".charCodeAt(0)] = "present";
-          if (newGameState.solution[i] == x)
-            tempKeys[x.charCodeAt(0) - "a".charCodeAt(0)] = "correct";
-        } else tempKeys[x.charCodeAt(0) - "a".charCodeAt(0)] = "absent";
-      }
-      setUsedKeys(tempKeys);
+      // let tempKeys = [...usedKeys];
+      // for (let i = 0; i < 5; i++) {
+      //   let x = newGameState.boardState[newGameState.rowIndex - 1][i];
+      //   if (newGameState.solution.includes(x)) {
+      //     if (tempKeys[x.charCodeAt(0) - "a".charCodeAt(0)] === "correct")
+      //       continue;
+      //     tempKeys[x.charCodeAt(0) - "a".charCodeAt(0)] = "present";
+      //     if (newGameState.solution[i] == x)
+      //       tempKeys[x.charCodeAt(0) - "a".charCodeAt(0)] = "correct";
+      //   } else tempKeys[x.charCodeAt(0) - "a".charCodeAt(0)] = "absent";
+      // }
+      setUsedKeys(newGameState.usedKeys);
       setScore1(score1 + newGameState.addPoints);
       if (newGameState.gameStatus === "LOST") setDisplaySolution(true);
     });
@@ -104,6 +105,7 @@ function Game({
       gameState: gameState1,
       guess: board1[gameState1.rowIndex].join(""),
       userid,
+      usedKeys,
     });
   };
 
