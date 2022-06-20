@@ -9,8 +9,8 @@ import useWindowDimensions from "./hooks/useWindowDimensions";
 
 export const AppContext = createContext();
 
-// const socket = io.connect("https://multiwordlebe.herokuapp.com/");
-const socket = io.connect("http://localhost:4000");
+const socket = io.connect("https://multiwordlebe.herokuapp.com/");
+// const socket = io.connect("http://localhost:4000");
 
 function App() {
   const width = useWindowDimensions();

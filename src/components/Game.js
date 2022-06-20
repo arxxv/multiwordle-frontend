@@ -36,9 +36,8 @@ function Game({
     let tempBoard = board1;
     for (let r = 0; r < 6; r++) {
       if (initState["boardState"][r] === "") break;
-      for (let c = 0; c < 5; c++) {
+      for (let c = 0; c < 5; c++)
         tempBoard[r][c] = initState["boardState"][r][c].toUpperCase();
-      }
     }
     setUsedKeys(initState.usedKeys);
     setBoard1(tempBoard);
@@ -54,18 +53,6 @@ function Game({
     socket.on("gameState", (newGameState) => {
       setLetterPos(0);
       setGameState1(newGameState);
-
-      // let tempKeys = [...usedKeys];
-      // for (let i = 0; i < 5; i++) {
-      //   let x = newGameState.boardState[newGameState.rowIndex - 1][i];
-      //   if (newGameState.solution.includes(x)) {
-      //     if (tempKeys[x.charCodeAt(0) - "a".charCodeAt(0)] === "correct")
-      //       continue;
-      //     tempKeys[x.charCodeAt(0) - "a".charCodeAt(0)] = "present";
-      //     if (newGameState.solution[i] == x)
-      //       tempKeys[x.charCodeAt(0) - "a".charCodeAt(0)] = "correct";
-      //   } else tempKeys[x.charCodeAt(0) - "a".charCodeAt(0)] = "absent";
-      // }
       setUsedKeys(newGameState.usedKeys);
       setScore1(score1 + newGameState.addPoints);
       if (newGameState.gameStatus === "LOST") setDisplaySolution(true);
