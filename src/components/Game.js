@@ -15,6 +15,7 @@ function Game({
   singlePlayer,
   setSinglePlayer,
   width,
+  opp,
 }) {
   const [gameState1, setGameState1] = useState({});
   const [game2Evals, setGame2Evals] = useState([]);
@@ -43,6 +44,11 @@ function Game({
     setBoard1(tempBoard);
     setGameState1(initState);
     setScore1(initState.points);
+
+    if (opp.evaluations) {
+      setScore2(opp.points);
+      setGame2Evals(opp.evaluations);
+    }
   }, []);
 
   useEffect(() => {
@@ -57,6 +63,7 @@ function Game({
       setScore1(score1 + newGameState.addPoints);
       if (newGameState.gameStatus === "LOST") setDisplaySolution(true);
     });
+
     socket.on("otherPlayerMove", (data) => {
       setGame2Evals(data.evaluations);
       setScore2(score2 + data.addPoints);

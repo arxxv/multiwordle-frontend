@@ -14,11 +14,11 @@ const socket = io.connect("https://multiwordlebe.herokuapp.com/");
 
 function App() {
   const width = useWindowDimensions();
-
   const [roomId, setRoomId] = useState("");
   const [roomPage, setRoomPage] = useState("T");
   const [initState, setInitState] = useState({});
   const [singlePlayer, setSinglePlayer] = useState(false);
+  const [opState, setOpState] = useState({});
 
   useEffect(() => {
     socket.on("uid", (uid) => {
@@ -33,9 +33,15 @@ function App() {
     socket.on("roomId", (roomId) => {
       setRoomId(roomId);
     });
-    socket.on("startGame", (gameState) => {
+    socket.on("startGame", (data) => {
       setRoomPage("F");
-      setInitState(gameState);
+
+      if (data.me) {
+        setInitState(data.me);
+        setOpState(data.op);
+      } else {
+        setInitState(data);
+      }
     });
   });
   const goHome = () => {
@@ -72,6 +78,7 @@ function App() {
           singlePlayer={singlePlayer}
           setSinglePlayer={setSinglePlayer}
           width={width}
+          opp={opState}
         />
       )}
     </div>
